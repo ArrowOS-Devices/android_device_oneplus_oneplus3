@@ -217,12 +217,6 @@ service adsprpcd /system/vendor/bin/adsprpcd
    group media
    writepid /dev/cpuset/system-background/tasks
 
-service audiod /system/vendor/bin/audiod
-   class late_start
-   user system
-   group system
-
-
 service usf_tester /system/vendor/bin/usf_tester
     user system
     group system inet
