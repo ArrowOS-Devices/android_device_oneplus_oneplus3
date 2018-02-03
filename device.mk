@@ -21,6 +21,9 @@
 # definition file).
 #
 
+# Device was launched with M
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
+
 $(call inherit-product, vendor/oneplus/oneplus3/oneplus3-vendor.mk)
 
 # Overlays
@@ -75,10 +78,6 @@ PRODUCT_AAPT_CONFIG := large xlarge normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xhdpi xxhdpi hdpi xxxhdpi mdpi
 
-
-# Device was launched with M
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.first_api_level=23
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
