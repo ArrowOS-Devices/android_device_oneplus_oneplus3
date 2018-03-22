@@ -91,4 +91,7 @@
 
     <!-- Do the battery/notification LEDs support pulsing? -->
     <bool name="config_ledCanPulse">true</bool>
+
+    <!-- Auto-brightness during doze -->
+    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
 </resources>
