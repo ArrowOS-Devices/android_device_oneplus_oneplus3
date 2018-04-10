@@ -370,7 +370,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # OMX
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libextmedia_jni \
     libmm-omxcore \
     libOmxAacEnc \
     libOmxAmrEnc \
