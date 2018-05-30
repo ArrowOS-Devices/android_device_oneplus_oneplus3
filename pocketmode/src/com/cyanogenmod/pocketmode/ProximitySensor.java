@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2015 The CyanogenMod Project
- *               2017-2018 The LineageOS Project
+ * Copyright (c) 2016 The CyanogenMod Project
+ *               2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,49 +15,40 @@
  * limitations under the License.
  */
 
-package org.lineageos.settings.doze;
+package com.cyanogenmod.pocketmode;
 
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.SystemClock;
 import android.util.Log;
 
-public class PickupSensor implements SensorEventListener {
+import com.cyanogenmod.pocketmode.FileUtils;
+
+public class ProximitySensor implements SensorEventListener {
 
     private static final boolean DEBUG = false;
-    private static final String TAG = "PickupSensor";
+    private static final String TAG = "PocketModeProximity";
 
-    private static final int BATCH_LATENCY_IN_MS = 100;
-    private static final int MIN_PULSE_INTERVAL_MS = 2500;
+    private static final String FP_PROX_NODE = "/sys/devices/soc/soc:fpc_fpc1020/proximity_state";
 
     private SensorManager mSensorManager;
     private Sensor mSensor;
     private Context mContext;
 
-    private long mEntryTimestamp;
-
-    public PickupSensor(Context context) {
+    public ProximitySensor(Context context) {
         mContext = context;
-        mSensorManager = mContext.getSystemService(SensorManager.class);
-        mSensor = Utils.getSensor(mSensorManager, "com.oneplus.sensor.pickup");
+        mSensorManager = (SensorManager)
+                mContext.getSystemService(Context.SENSOR_SERVICE);
+        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (DEBUG) Log.d(TAG, "Got sensor event: " + event.values[0]);
-
-        long delta = SystemClock.elapsedRealtime() - mEntryTimestamp;
-        if (delta < MIN_PULSE_INTERVAL_MS) {
-            return;
-        } else {
-            mEntryTimestamp = SystemClock.elapsedRealtime();
-        }
-
-        if (event.values[0] == 1) {
-            Utils.launchDozePulse(mContext);
+        boolean isNear = event.values[0] < mSensor.getMaximumRange();
+        if (FileUtils.isFileWritable(FP_PROX_NODE)) {
+            FileUtils.writeLine(FP_PROX_NODE, isNear ? "1" : "0");
         }
     }
 
@@ -69,8 +60,7 @@ public class PickupSensor implements SensorEventListener {
     protected void enable() {
         if (DEBUG) Log.d(TAG, "Enabling");
         mSensorManager.registerListener(this, mSensor,
-                SensorManager.SENSOR_DELAY_NORMAL, BATCH_LATENCY_IN_MS * 1000);
-        mEntryTimestamp = SystemClock.elapsedRealtime();
+                SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     protected void disable() {
