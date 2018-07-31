@@ -249,6 +249,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     OneplusThreeDoze
 
+# Spectrum
+PRODUCT_PACKAGES += \
+   init.spectrum.rc \
+   init.spectrum.sh
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
