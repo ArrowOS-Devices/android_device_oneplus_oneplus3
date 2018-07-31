@@ -46,22 +46,22 @@
 
     <!-- Default value for proximity check on screen wake
      NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
-    <bool name="config_proximityCheckOnWake">true</bool>
-    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+    <!-- bool name="config_proximityCheckOnWake">true</bool>
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool -->
 
     <!-- Does the notification LED support multiple colors?
          Used to decide if the user can change the colors -->
-    <!-- bool name="config_multiColorNotificationLed">true</bool -->
+    <bool name="config_multiColorNotificationLed">true</bool>
 
     <!-- Is the battery LED intrusive? -->
-    <!-- bool name="config_intrusiveBatteryLed">true</bool -->
+    <bool name="config_intrusiveBatteryLed">true</bool>
 
     <!-- Does the battery LED support multiple colors? -->
-    <!-- bool name="config_multiColorBatteryLed">true</bool -->
+    <bool name="config_multiColorBatteryLed">true</bool>
 
     <!-- Do the battery/notification LEDs support pulsing?
          Used to decide if we show pulse settings -->
-    <!-- bool name="config_ledCanPulse">true</bool -->
+    <bool name="config_ledCanPulse">true</bool>
 
     <!-- Button brightness -->
     <bool name="config_button_brightness_support">true</bool>
@@ -71,8 +71,5 @@
 
     <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
     <bool name="config_displayBlanksAfterDoze">true</bool>
-
-    <!-- Whether device has dash charging support -->
-    <!-- bool name="config_hasDashCharger">true</bool -->
 
 </resources>
