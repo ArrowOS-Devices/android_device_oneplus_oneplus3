@@ -82,6 +82,11 @@ persist.timed.enable=true
 # system property for maximum number of HFP client connections
 bt.max.hfpclient.connections=1
 
+# Graphics
+debug.sf.recomputecrop=0
+ro.sf.lcd_density=420
+debug.sf.enable_hwc_vds=1
+
 # System property for cabl
 ro.qualcomm.cabl=2
 
@@ -155,6 +160,9 @@ ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 # Create zram disk
 #ro.vendor.qti.config.zram=true
+
+# touch optimize
+persist.vendor.qti.inputopts.enable=true
 
 #Camera fullscreen doesn't show navigation bar
 Camera.no_navigation_bar=true
