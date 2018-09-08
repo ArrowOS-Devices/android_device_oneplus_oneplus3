@@ -15,8 +15,6 @@
      limitations under the License.
 -->
 <resources>
-    <!-- Button backlight -->
-    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 
     <!-- Whether the always on display mode is available. -->
     <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
