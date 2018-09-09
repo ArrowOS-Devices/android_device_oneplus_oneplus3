@@ -72,4 +72,7 @@
     -->
     <integer name="config_longPressOnAppSwitchBehavior">9</integer>
 
+    <!-- Button backlight -->
+    <bool name="config_button_brightness_support">true</bool>
+
 </resources>
