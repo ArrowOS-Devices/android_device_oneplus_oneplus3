@@ -73,4 +73,7 @@
 
     <!-- Button backlight -->
     <bool name="config_button_brightness_support">true</bool> 
+
+    <!-- Dash charge -->
+    <bool name="config_hasDashCharger">true</bool>
 </resources>
