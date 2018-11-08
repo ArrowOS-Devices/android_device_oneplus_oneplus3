@@ -487,3 +487,7 @@ PRODUCT_COPY_FILES += \
 
 # Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)
+
+# Force disable blanking
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.force_no_blanking=true
