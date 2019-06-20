@@ -211,7 +211,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     Snap \
     libcamera_parameters_shim \
-    libcamera_shim \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service
 
