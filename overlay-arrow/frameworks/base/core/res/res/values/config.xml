@@ -33,4 +33,6 @@
     <!-- Whether device has dash charging support -->
     <bool name="config_hasDashCharger">true</bool>
 
+    <!-- Button backlight -->
+    <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 </resources>
