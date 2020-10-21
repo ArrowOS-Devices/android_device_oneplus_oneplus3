@@ -31,6 +31,9 @@ PRODUCT_DEVICE := oneplus3
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
 
+# ArrowOS Maintainer
+DEVICE_MAINTAINER := Gaurav24
+
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
 BUILD_FINGERPRINT := "OnePlus/OnePlus3/OnePlus3:9/PKQ1.181203.001/1907311932:user/release-keys"
