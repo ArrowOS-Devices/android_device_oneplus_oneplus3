@@ -220,7 +220,6 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8996 \
     memtrack.msm8996 \
     libdisplayconfig \
-    liboverlay \
     libqdMetaData.system \
     libtinyxml \
     android.hardware.graphics.allocator@2.0-impl \
