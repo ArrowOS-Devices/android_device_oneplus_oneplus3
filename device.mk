@@ -210,17 +210,21 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 
+# Display
+PRODUCT_PACKAGES += \
+    libdisplayconfig \
+    libqdMetaData \
+    libqdMetaData.system
+
 # Dirac
 PRODUCT_PACKAGES += \
     Dirac
 
-# Display/Graphics
+# Graphics
 PRODUCT_PACKAGES += \
     gralloc.msm8996 \
     hwcomposer.msm8996 \
     memtrack.msm8996 \
-    libdisplayconfig \
-    libqdMetaData.system \
     libtinyxml \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
@@ -266,20 +270,12 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-service
 
 # GPS
-PRODUCT_PACKAGES += \
-    libcurl \
-    libgnss \
-    libgnsspps \
-    libsensorndkbridge \
-    android.hardware.gnss@1.0-impl-qti
+$(call inherit-product, hardware/qcom/gps/gps_vendor_board.mk)
+$(call inherit-product, hardware/qcom/gps/gps_vendor_product.mk)
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/etc/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
-    $(LOCAL_PATH)/gps/etc/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
-    $(LOCAL_PATH)/gps/etc/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
-    $(LOCAL_PATH)/gps/etc/lowi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/lowi.conf \
-    $(LOCAL_PATH)/gps/etc/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf \
-    $(LOCAL_PATH)/gps/etc/xtwifi.conf:$(TARGET_COPY_OUT_VENDOR)/etc/xtwifi.conf
+PRODUCT_PACKAGES += \
+    libjson \
+    libsensorndkbridge
 
 # Healthd
 PRODUCT_PACKAGES += \
@@ -441,7 +437,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.radio@1.4 \
     android.hardware.radio.config@1.2 \
-    android.hardware.secure_element@1.0 \
+    android.hardware.radio.deprecated@1.0 \
     librmnetctl \
     libprotobuf-cpp-full
 
@@ -513,18 +509,16 @@ PRODUCT_COPY_FILES += \
 
 # Wifi
 PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml \
-    libQWiFiSoftApCfg \
-    libwpa_client \
+    android.hardware.wifi@1.0-service \
     hostapd \
-    wificond \
-    wifilogd \
+    libwifi-hal-qcom \
     wpa_supplicant \
-    wpa_supplicant.conf \
-    android.hardware.wifi@1.0-service
+    wpa_supplicant.conf
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/hostapd.accept:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd.accept \
+    $(LOCAL_PATH)/wifi/hostapd.conf:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd_default.conf \
+    $(LOCAL_PATH)/wifi/hostapd.deny:$(TARGET_COPY_OUT_VENDOR)/etc/hostapd/hostapd.deny \
     $(LOCAL_PATH)/wifi/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
@@ -534,7 +528,8 @@ PRODUCT_COPY_FILES += \
 # WiFi Display
 PRODUCT_PACKAGES += \
     libaacwrapper \
-    libnl
+    libnl \
+    libwfdaac
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
