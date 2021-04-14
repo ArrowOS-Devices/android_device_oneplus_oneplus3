@@ -1,4 +1,2 @@
 # OTA with encrypted f2fs
 allow system_server ota_package_file:dir getattr;
-# Smart charging
-allow system_server sysfs_battery_supply:file { getattr open read write };
